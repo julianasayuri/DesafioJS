@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+
+    <h3>Cadastro de escola</h3>
+    Escola: <input type="text" id="escola">
+    <br>
+    Cidade: <input type="text" id="cidade">
+    <br>
+    <input type="button" onclick="adicionar()" value="Ok">
+
+
+    <h3>Pesquisa</h3>
+    Escola: <select id="cbbEscola"> </select>
+    Cidade: <select id="cbbCidade"> </select>
+    <br><br>
+    <input type="button" onclick="buscar()" value="Buscar">
+    <input type="button" onclick="listarEscolas()" value="Listar escolas";>
+    <ul id="lista">  </ul>
+
+    <script src="script.js"></script>
+  </body>
+</html>
