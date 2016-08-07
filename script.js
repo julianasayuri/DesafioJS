@@ -83,11 +83,31 @@ function buscar()
 	else
 	{
 		var lista = document.getElementById("lista");
-		var item = document.createElement('li');
-		item.innerText = cadastro[valorE].escola;
-		lista.appendChild(item);
+		var escola = document.createElement('li');
+		escola.innerText = cadastro[valorE].escola;
+		lista.appendChild(escola);
+		var cidade = document.createElement('li');
+		cidade.innerText = cadastro[valorE].cidade;
+		lista.appendChild(cidade);
+		document.getElementById("btnEditar").setAttribute('style', 'visibility:visible');
+		document.getElementById("btnExcluir").setAttribute('style', 'visibility:visible');
 	}
 }
+
+function excluir()
+{
+	var id = document.getElementById("cbbEscola").value;
+	cadastro.splice(id, 1);
+	limparLista();
+	carregaCombo();
+}
+
+function editarEscola(id, nomeEsc, nomeCid)
+{
+  escola[id] = nomeEsc;
+  cidade[id] = nomeCid;
+}
+
 inicializaArray();
 carregaCombo();
 
