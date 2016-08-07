@@ -39,30 +39,26 @@ function carregaCombo()
 {
   //limpa os combos
   document.getElementById("cbbEscola").innerHTML = "";
-  document.getElementById("cbbCidade").innerHTML = "";
   //adiciona itens nos combos
   var cbbEscola = document.getElementById("cbbEscola");
-  var cbbCidade = document.getElementById("cbbCidade");
   //opção de busca vazia
   var opVaziaEscola = document.createElement('option');
-  var opVaziaCidade = document.createElement('option');
+  
   opVaziaEscola.innerHTML = "-";
-  opVaziaCidade.innerHTML = "-";
   opVaziaEscola.value = -1;
-  opVaziaCidade.value = -1;
   cbbEscola.appendChild(opVaziaEscola);
-  cbbCidade.appendChild(opVaziaCidade);
+
   //preenche combos
   for (var i = 0; i < cadastro.length; i++)
   {
     var opE = document.createElement('option');
-	var opC = document.createElement('option');
+	
     opE.innerHTML = cadastro[i].escola;
-	opC.innerHTML = cadastro[i].cidade;
+	
     opE.value = i;
-	opC.value = i;
+	
     cbbEscola.appendChild(opE);
-	cbbCidade.appendChild(opC);
+	
   }
 }
 
@@ -80,10 +76,9 @@ function buscar()
 {
 	limparLista();
 	var valorE = document.getElementById("cbbEscola").value;
-	var valorC = document.getElementById("cbbCidade").value;
-	if(valorE == -1 && valorC == -1)
+	if(valorE == -1)
 	{
-		alert("Selecione um item");
+		alert("Selecione uma escola");
 	}
 	else
 	{
@@ -92,8 +87,6 @@ function buscar()
 		item.innerText = cadastro[valorE].escola;
 		lista.appendChild(item);
 	}
-	
-  
 }
 inicializaArray();
 carregaCombo();
