@@ -12,6 +12,15 @@ function inicializaArray()
   }
 }
 
+function limparLista()
+{
+  var lista = document.getElementById("lista");
+  while(lista.firstChild)
+  {
+    lista.removeChild(lista.firstChild);
+  }
+}
+
 //mostrar todas as escolas cadastradas em uma ul
 function listarEscolas()
 {
@@ -32,8 +41,18 @@ function carregaCombo()
   document.getElementById("cbbEscola").innerHTML = "";
   document.getElementById("cbbCidade").innerHTML = "";
   //adiciona itens nos combos
-  var cbbEscola = document.getElementById('cbbEscola');
-  var cbbCidade = document.getElementById('cbbCidade');
+  var cbbEscola = document.getElementById("cbbEscola");
+  var cbbCidade = document.getElementById("cbbCidade");
+  //opção de busca vazia
+  var opVaziaEscola = document.createElement('option');
+  var opVaziaCidade = document.createElement('option');
+  opVaziaEscola.innerHTML = "-";
+  opVaziaCidade.innerHTML = "-";
+  opVaziaEscola.value = -1;
+  opVaziaCidade.value = -1;
+  cbbEscola.appendChild(opVaziaEscola);
+  cbbCidade.appendChild(opVaziaCidade);
+  //preenche combos
   for (var i = 0; i < cadastro.length; i++)
   {
     var opE = document.createElement('option');
@@ -57,16 +76,25 @@ function adicionar()
   document.getElementById("cidade").value = "";
 }
 
-function limparLista()
+function buscar()
 {
-  var lista = document.getElementById("lista");
-  while(lista.firstChild)
-  {
-    lista.removeChild(lista.firstChild);
-  }
+	limparLista();
+	var valorE = document.getElementById("cbbEscola").value;
+	var valorC = document.getElementById("cbbCidade").value;
+	if(valorE == -1 && valorC == -1)
+	{
+		alert("Selecione um item");
+	}
+	else
+	{
+		var lista = document.getElementById("lista");
+		var item = document.createElement('li');
+		item.innerText = cadastro[valorE].escola;
+		lista.appendChild(item);
+	}
+	
+  
 }
-
-
 inicializaArray();
 carregaCombo();
 
